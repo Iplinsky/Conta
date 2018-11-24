@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -12,23 +14,28 @@ public class Program {
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
+				
+		List <Account> list = new ArrayList<>();
+		list.add(new SavingsAccount(1001, "Thiago", 1500.0, 0.01));
+		list.add(new BusinessAccount(1002, "Ana Izabel", 1000.0, 400.0));
+		list.add(new SavingsAccount(1003, "Max", 500.0, 0.01));
+		list.add(new BusinessAccount(1004, "Anna", 1500.0, 400.0));
 		
-		Account acc1 = new Account(1001, "Thiago", 1000.0);
-		acc1.withdraw(200.0);
+		double sum = 0.0;
+		for (Account acc : list) {
+			sum += acc.getBalance();
+		}
 		
-		System.out.println(acc1.getBalance());
+		System.out.printf("Saldo total: %.2f", sum);
+		System.out.println();
 		
+		for (Account acc : list) {
+			acc.deposit(10.0);
+		}
 		
-		Account acc2 = new SavingsAccount(1002, "Ana", 1000.0, 0.01);
-		acc2.withdraw(200.0);
-		
-		System.out.println(acc2.getBalance());
-		
-		Account acc3 = new BusinessAccount(1003, "Jhon", 1000.0, 500.0);
-		acc3.withdraw(200.0);
-		
-		System.out.println(acc3.getBalance());
-		
+		for (Account acc : list) {
+			System.out.printf("Saldo atualizado da conta %d: " + "R$ %.2f%n", acc.getNumber(), acc.getBalance() );
+		}
 		
 		sc.close();
 		
