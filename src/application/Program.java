@@ -28,13 +28,14 @@ public class Program {
 		
 		System.out.printf("Saldo total: %.2f", sum);
 		System.out.println();
+		System.out.println("-------------------------------------------");
 		
 		for (Account acc : list) {
 			acc.deposit(10.0);
 		}
 		
 		for (Account acc : list) {
-			System.out.printf("Saldo atualizado da conta %d: " + "R$ %.2f%n", acc.getNumber(), acc.getBalance() );
+			System.out.printf("> Saldo atualizado da conta %d: " + "R$ %.2f%n", acc.getNumber(), acc.getBalance() );
 		}
 		
 		sc.close();
